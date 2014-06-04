@@ -63,5 +63,14 @@ class Deck {
     return sorted;
   }
   
+  void shuffle() {
+    for (int i = 0; i < 52; i++) {
+      int rand = (int) (Math.random() * 52);
+      temp = deck[i];
+      deck[i] = deck[rand];
+      deck[rand] = deck[i];
+    }
+  }
+  
 }
 
