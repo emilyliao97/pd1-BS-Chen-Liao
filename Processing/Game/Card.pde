@@ -13,6 +13,7 @@ class Card {
 
   final int suit;
   final int value;
+  Card next, prev;
 
   Card() {
     suit = JOKER;
@@ -32,6 +33,19 @@ class Card {
     return suit;
   }
 
+  void setNext(Card n) {
+    next = n;
+  }
+  Card getNext() {
+    return next;
+  }
+  void setPrev(Card p) {
+    prev = p;
+  }
+  Card getPrev() {
+    return prev;
+  }
+
   String getSuitStr() {
     if (suit == 0)
       return "diamond";
@@ -41,23 +55,19 @@ class Card {
       return "heart";
     else if (suit == 3)  
       return "spade";
-    return ""; 
+    return "";
   }
-  
+
   int compareTo(Card c) {
-    if (this.getValue() > c.getValue()) {
+    if (this.getValue() > c.getValue())
       return 1;
-    }
-    else if (this.getValue() < c.getValue()) {
+    else if (this.getValue() < c.getValue())
       return -1;
-    }
     else { // values are equal
-      if (this.getSuit() > c.getSuit()) {
+      if (this.getSuit() > c.getSuit())
         return 1;
-      }
-      else {
+      else
         return -1;
-      }
     }
   }
 }

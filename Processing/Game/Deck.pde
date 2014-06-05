@@ -1,10 +1,9 @@
 class Deck {
   Card[] deck;
-  int size = 52; // no Jokers
 
   // creates the entire deck in order
   Deck() {
-    deck = new Card[size];
+    deck = new Card[52];
     int cardNum = 0;
     for (int val=0; val<13; val++) {
       for (int suit=0; suit<4; suit++) {
@@ -19,8 +18,8 @@ class Deck {
       return d;
     }
     else {
-      Card[] d1 = new Card[size];
-      Card[] d2 = new Card[size];
+      Card[] d1 = new Card[52];
+      Card[] d2 = new Card[52];
       int half = d.length / 2;
       int d1Count = 0, d2Count = 0;
       for (int i=0; i<half; i++) {
@@ -42,7 +41,7 @@ class Deck {
   Card[] merge(Card[] d1, Card[] d2) {
     Card[] sorted = new Card[52];
     int d1Count = 0, d2Count = 0;
-    for (int i=0; i<size; i++) {
+    for (int i=0; i<52; i++) {
       if (d1Count == d1.length) {
         sorted[i] = d2[d2Count];
         d2Count++;
@@ -64,11 +63,11 @@ class Deck {
   }
   
   void shuffle() {
-    for (int i = 0; i < 52; i++) {
+    for (int i = 0; i < 100; i++) {
       int rand = (int) (Math.random() * 52);
-      temp = deck[i];
+      Card temp = deck[i];
       deck[i] = deck[rand];
-      deck[rand] = deck[i];
+      deck[rand] = temp;
     }
   }
   
