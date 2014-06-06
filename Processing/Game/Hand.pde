@@ -4,10 +4,13 @@ class Hand {
   Card current;
   int size;
   
+<<<<<<< HEAD
   boolean isEmpty() {
     return (size == 0);
   }
   
+=======
+>>>>>>> afa0f2ad6af9236a7aa8d83de7fdfd6fa9f3b781
   void insert(Card c) {
     if (current == null) {
       current = c;

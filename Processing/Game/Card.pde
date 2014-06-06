@@ -13,16 +13,20 @@ class Card {
 
   final int suit;
   final int value;
+
   Card next, prev;
+  PImage img;
 
   Card() {
     suit = JOKER;
     value = -1;
+    img = null;
   }
 
   Card(int v, int s) {
     suit = s;
     value = v;
+    setImage();
   }
 
   int getValue() {
@@ -68,6 +72,30 @@ class Card {
         return 1;
       else
         return -1;
+    }
+  }
+
+  void setImage() {
+    if (suit == CLUBS) {
+      if (value < 10)
+        img = loadImage("00" + value + "c.gif");
+      else if (value <= 13) 
+        img = loadImage("0" + value + "c.gif");
+    } else if (suit == DIAMONDS) {
+      if (value < 10) 
+        img = loadImage("00" + value + "d.gif");
+      else if (value <= 13) 
+        img = loadImage("0" + value + "d.gif");
+    } else if (suit == HEARTS) {
+      if (value < 10) 
+        img = loadImage("00" + value + "h.gif");
+      else if (value <= 13) 
+        img = loadImage("0" + value + "h.gif");
+    } else if (suit == SPADES) {
+      if (value < 10) 
+        img = loadImage("00" + value + "s.gif");
+      else if (value <= 13) 
+        img = loadImage("0" + value + "s.gif");
     }
   }
 }
