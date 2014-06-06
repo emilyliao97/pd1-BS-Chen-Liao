@@ -1,5 +1,5 @@
 // doubly linked list of cards
-class Hand extends Deck {
+class Hand {
   
   Card current;
   int size;
@@ -21,16 +21,24 @@ class Hand extends Deck {
   }
   
   void discard() {
-    if (current == null || current.next == current.prev)
+    if (current.next == current.prev) {
+      // add current to discard pile
       current = null;
+    }
     else {
+      // add current to discard pile
       current.next.prev = current.prev;
       current.prev.next = current.next;
       current = current.next;
     }
-    // later when the discard pile class is created
-    // add the discarded card to the top of that pile
   }
+  
+  /*
+  void addDiscards() {
+    
+  }
+  if BS, add the discard pile into this hand
+  */
   
   Card getCurrent() {
     return current;

@@ -10,4 +10,6 @@ Date --- Name --- Description of what was done
 
 6/4 --- Emily --- Wrote shuffle method for Deck class
 
-6/5 --- Jane --- Fixed shuffle and created Hand class
+6/4 --- Jane --- Fixed shuffle and created Hand class
+
+6/5 --- Jane --- Wrote Discards class and edited Hand class
