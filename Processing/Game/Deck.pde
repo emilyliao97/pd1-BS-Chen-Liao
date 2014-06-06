@@ -1,5 +1,9 @@
 class Deck {
   Card[] deck;
+  Hand p1;
+  Hand p2;
+  Hand p3;
+  Hand p4;
 
   // creates the entire deck in order
   Deck() {
@@ -10,6 +14,22 @@ class Deck {
         deck[cardNum] = new Card(suit, val);
       }
     }
+  }
+  
+  Hand getp1() {
+    return p1;
+  }
+  
+  Hand getp2() {
+    return p2;
+  }
+  
+  Hand getp3() {
+    return p3;
+  }
+  
+  Hand getp4() {
+    return p4;
   }
   
   // d for deck
@@ -68,6 +88,16 @@ class Deck {
       Card temp = deck[i];
       deck[i] = deck[rand];
       deck[rand] = temp;
+    }
+  }
+  
+  void deal() {
+    shuffle();
+    for (int i = 0; i < 52; i+=4) {
+      p1.insert(deck[i]);
+      p2.insert(deck[i+1]);
+      p3.insert(deck[i+2]);
+      p4.insert(deck[i+3]);
     }
   }
   

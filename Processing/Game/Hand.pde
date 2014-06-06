@@ -4,7 +4,11 @@ class Hand {
   Card current;
   int size;
   
-  public void insert(Card c) {
+  boolean isEmpty() {
+    return (size == 0);
+  }
+  
+  void insert(Card c) {
     if (current == null) {
       current = c;
       c.next = c;
