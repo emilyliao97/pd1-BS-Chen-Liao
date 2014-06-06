@@ -4,7 +4,7 @@ class Hand {
   Card current;
   int size;
   
-  public void insert(Card c) {
+  void insert(Card c) {
     if (current == null) {
       current = c;
       c.next = c;
