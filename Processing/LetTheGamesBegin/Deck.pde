@@ -85,7 +85,7 @@ class Deck {
   
   void shuffle() {
     for (int i = 0; i < 52; i++) {
-      int rand = (int) (Math.random() * 52);
+      int rand = (int) random(52);
       Card temp = deck[i];
       deck[i] = deck[rand];
       deck[rand] = temp;

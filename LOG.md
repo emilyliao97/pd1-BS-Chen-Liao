@@ -21,3 +21,5 @@ Date --- Name --- Description of what was done
 6/7 --- Jane --- Changed name of Game class to fix error
 
 6/8 --- Jane --- Added images to the folder and fixed more errors
+
+6/9 --- Emily --- Fixed more errors and started working on player class
