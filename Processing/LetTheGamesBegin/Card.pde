@@ -4,7 +4,7 @@ class Card {
   final static int HEARTS = 2;
   final static int CLUBS = 1;
   final static int DIAMONDS = 0;
-  final static int JOKER = -1;
+  //final static int JOKER = -1;
 
   final static int ACE = 1;
   final static int JACK = 11;
@@ -16,12 +16,6 @@ class Card {
 
   Card next, prev;
   PImage img;
-
-  Card() {
-    suit = JOKER;
-    value = -1;
-    img = null;
-  }
 
   Card(int v, int s) {
     suit = s;
@@ -76,26 +70,27 @@ class Card {
   }
 
   void setImage() {
+    String folder = "CardPics/";
     if (suit == CLUBS) {
       if (value < 10)
-        img = loadImage("00" + value + "c.gif");
+        img = loadImage(folder + "00" + value + "c.gif");
       else if (value <= 13) 
-        img = loadImage("0" + value + "c.gif");
+        img = loadImage(folder + "0" + value + "c.gif");
     } else if (suit == DIAMONDS) {
       if (value < 10) 
-        img = loadImage("00" + value + "d.gif");
+        img = loadImage(folder + "00" + value + "d.gif");
       else if (value <= 13) 
-        img = loadImage("0" + value + "d.gif");
+        img = loadImage(folder + "0" + value + "d.gif");
     } else if (suit == HEARTS) {
       if (value < 10) 
-        img = loadImage("00" + value + "h.gif");
+        img = loadImage(folder + "00" + value + "h.gif");
       else if (value <= 13) 
-        img = loadImage("0" + value + "h.gif");
+        img = loadImage(folder + "0" + value + "h.gif");
     } else if (suit == SPADES) {
       if (value < 10) 
-        img = loadImage("00" + value + "s.gif");
+        img = loadImage(folder + "00" + value + "s.gif");
       else if (value <= 13) 
-        img = loadImage("0" + value + "s.gif");
+        img = loadImage(folder + "0" + value + "s.gif");
     }
   }
 }
