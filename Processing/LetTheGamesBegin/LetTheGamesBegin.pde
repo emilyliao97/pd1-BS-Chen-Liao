@@ -50,7 +50,7 @@ class Game {
       d1.deal();
       player1 = d1.getp1();
       player2 = d1.getp2();
-      player2 = d1.getp3();
+      player3 = d1.getp3();
       user = d1.getp4();
     }
 
@@ -58,8 +58,10 @@ class Game {
       startgame();
       if (user.isEmpty() || player1.isEmpty() || player2.isEmpty() || player3.isEmpty() ) 
         isPlaying = false; 
-      else 
+      while ( isPlaying = true ) {
         call();
+      
     }
   }
+}
 

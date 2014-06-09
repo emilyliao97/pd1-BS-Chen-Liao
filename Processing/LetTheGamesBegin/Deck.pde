@@ -9,9 +9,9 @@ class Deck {
   Deck() {
     deck = new Card[52];
     int cardNum = 0;
-    for (int val=0; val<13; val++) {
+    for (int val=1; val<=13; val++) {
       for (int suit=0; suit<4; suit++) {
-        deck[cardNum] = new Card(suit, val);
+        deck[cardNum] = new Card(val,suit);
       }
     }
   }
@@ -83,7 +83,7 @@ class Deck {
   }
   
   void shuffle() {
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i < 52; i++) {
       int rand = (int) (Math.random() * 52);
       Card temp = deck[i];
       deck[i] = deck[rand];
