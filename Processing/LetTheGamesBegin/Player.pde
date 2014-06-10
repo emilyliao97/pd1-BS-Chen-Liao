@@ -17,4 +17,8 @@ class Player {
     return mine;
   }
   
+  void take(Card c) {
+    mine.insert(c);
+  }
+  
 }

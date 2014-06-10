@@ -15,6 +15,10 @@ class Deck {
         cardNum++;
       }
     }
+    p1 = new Hand();
+    p2 = new Hand();
+    p3 = new Hand();
+    p4 = new Hand();
   }
   
   Hand getp1() {

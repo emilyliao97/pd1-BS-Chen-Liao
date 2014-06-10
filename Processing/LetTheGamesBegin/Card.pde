@@ -4,7 +4,7 @@ class Card {
   final static int HEARTS = 2;
   final static int CLUBS = 1;
   final static int DIAMONDS = 0;
-  //final static int JOKER = -1;
+  final static int JOKER = -1;
 
   final static int ACE = 1;
   final static int JACK = 11;
@@ -16,11 +16,20 @@ class Card {
 
   Card next, prev;
   PImage img;
+  
+  Card() {
+    suit = JOKER;
+    value = JOKER;
+    next = null;
+    prev = null;
+  }
 
   Card(int v, int s) {
     suit = s;
     value = v;
     setImage();
+    next = null;
+    prev = null;
   }
 
   int getValue() {

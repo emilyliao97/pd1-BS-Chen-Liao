@@ -4,6 +4,11 @@ class Hand {
   Card current;
   int size;
   
+  Hand() {
+    current = null;
+    size = 0;
+  }
+  
   boolean isEmpty() {
     return (size == 0);
   }
