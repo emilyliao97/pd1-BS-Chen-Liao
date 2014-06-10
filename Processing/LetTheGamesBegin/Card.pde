@@ -102,5 +102,9 @@ class Card {
         img = loadImage(folder + "0" + value + "s.gif");
     }
   }
+  
+  PImage getImage() {
+    return img;
+  }
 }
 
