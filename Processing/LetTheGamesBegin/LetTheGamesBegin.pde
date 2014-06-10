@@ -22,7 +22,7 @@ class Game {
     d1 = new Deck();
     discardPile = new Discards();
     // in the middle of changing & incorportating a player class
-    Player user = player1 = player2 = player3 = new Hand();
+    Player user = player1 = player2 = player3 = new Player();
     //startingPlayer();
     isPlaying = false;
   }
@@ -49,10 +49,10 @@ class Game {
     void startgame() {
       isPlaying = true;
       d1.deal();
-      player1 = d1.getp1();
-      player2 = d1.getp2();
-      player3 = d1.getp3();
-      user = d1.getp4();
+      player1 = new Player(d1.getp1());
+      player2 = new Player(d1.getp2());
+      player3 = new Player(d1.getp3());
+      user = new Player(d1.getp4());
       int start = (int) random(4);
       currentPlayer = start;
     }
@@ -77,7 +77,10 @@ class Game {
 
     void play() {
       startgame();
-      if (user.isEmpty() || player1.isEmpty() || player2.isEmpty() || player3.isEmpty() ) 
+      if (user.getMine().isEmpty() 
+      || player1.getMine().isEmpty() 
+      || player2.getMine().isEmpty() 
+      || player3.getMine().isEmpty() ) 
         isPlaying = false; 
       while ( isPlaying == true ) {
         call();
