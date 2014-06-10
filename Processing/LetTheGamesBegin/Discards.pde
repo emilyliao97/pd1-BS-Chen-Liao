@@ -7,6 +7,10 @@ class Discards {
     size = 0;
   }
 
+  int getSize() {
+    return size;
+  }
+
   void setTop(Card c) {
     top = c;
     size++;
