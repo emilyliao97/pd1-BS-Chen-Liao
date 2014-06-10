@@ -43,12 +43,14 @@ class Card {
   void setNext(Card n) {
     next = n;
   }
+  
   Card getNext() {
     return next;
   }
   void setPrev(Card p) {
     prev = p;
   }
+  
   Card getPrev() {
     return prev;
   }
