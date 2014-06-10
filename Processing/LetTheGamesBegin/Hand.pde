@@ -13,6 +13,10 @@ class Hand {
     return (size == 0);
   }
   
+  int getSize() {
+    return size;
+  }
+  
   void insert(Card c) {
     if (current == null) {
       current = c;
@@ -27,6 +31,7 @@ class Hand {
       current.prev = c;
       current = c;
     }
+    size++;
   }
   
   // discards the current card
@@ -40,6 +45,7 @@ class Hand {
       current.prev.next = current.next;
       current = current.next;
     }
+    size--;
     return c;
   }
   
