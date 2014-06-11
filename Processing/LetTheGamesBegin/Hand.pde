@@ -31,6 +31,7 @@ class Hand {
       current.prev = c;
       current = c;
     }
+    size++;
   }
   
   // discards the current card
@@ -44,6 +45,7 @@ class Hand {
       current.prev.next = current.next;
       current = current.next;
     }
+    size--;
     return c;
   }
   
