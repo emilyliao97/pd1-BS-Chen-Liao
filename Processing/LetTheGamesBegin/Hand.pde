@@ -13,6 +13,10 @@ class Hand {
     return (size == 0);
   }
   
+  int getSize() {
+    return size;
+  }
+  
   void insert(Card c) {
     if (current == null) {
       current = c;
@@ -42,13 +46,6 @@ class Hand {
     }
     return c;
   }
-  
-  /*
-  void addDiscards() {
-    
-  }
-  if BS, add the discard pile into this hand
-  */
   
   Card getCurrent() {
     return current;
