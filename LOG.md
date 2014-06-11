@@ -23,3 +23,7 @@ Date --- Name --- Description of what was done
 6/8 --- Jane --- Added images to the folder and fixed more errors
 
 6/9 --- Emily --- Fixed more errors and started working on player class
+
+6/10 -- Emily --- Fixed up compilation errors in code and added new functionality for player class
+
+6/10 -- Jane --- Started experimenting with sketching the game
