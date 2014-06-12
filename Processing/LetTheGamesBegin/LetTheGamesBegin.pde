@@ -1,18 +1,14 @@
 Game g;
 
 void setup() {
-  size(600, 600);
+  size(600,600);
   g = new Game();
 }
 
 void draw() {
-  background(100);
+  background(255);
+  fill(255,0,0);
   g.play();
-  
-  // displaying image in progress
-  for (int i=0; i<g.user.getMine().getSize(); i++) {
-    image(g.user.getMine().getCurrent().getImage(),50+75*i,500);
-  }
 }
 
 class Game {
@@ -93,6 +89,15 @@ class Game {
       //if (currentPlayer = 0) 
       //insert code for player clicking card & placing it down
     }
+  }
+
+  void displayUserHand() {   
+    // displaying image in progress
+/*
+    for (int i=0; i<g.user.getMine().getSize(); i++) {
+      image(g.user.getMine().getCurrent().getImage(), 50+75*i, 500);
+    }
+    */
   }
 }
 
