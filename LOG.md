@@ -27,3 +27,5 @@ Date --- Name --- Description of what was done
 6/10 -- Emily --- Fixed up compilation errors in code and added new functionality for player class
 
 6/10 -- Jane --- Started experimenting with sketching the game
+
+6/11 -- Emily --- tried to fix sketch window issue... (didn't succeed... yet)
