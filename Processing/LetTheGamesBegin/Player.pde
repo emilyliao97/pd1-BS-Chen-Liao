@@ -27,14 +27,5 @@ class Player {
       take(now);
       now = d.getTop().getNext();
     }
-  }
-  
-  int pBS() {
-    for ( int i = 0; i < 13; i++ ) {
-      if ((mine.getNum())[i] == 4)
-        percentBS = 100;   
-    }
-    return percentBS;
-  }
-  
+  } 
 }

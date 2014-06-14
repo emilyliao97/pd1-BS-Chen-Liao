@@ -99,12 +99,17 @@ class Deck {
   
   void deal() {
     shuffle();
+    for (int i=0; i<13; i++) {
+      p1.insert(deck[i]);
+      
+    /*
     for (int i = 0; i<52; i+=4) {
       p1.insert(deck[i]);
       p2.insert(deck[i+1]);
       p3.insert(deck[i+2]);
-      //p4.insert(deck[i+3]);
+      p4.insert(deck[i+3]);
     }
+    */
   }
 
 }
