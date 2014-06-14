@@ -2,10 +2,12 @@
 class Hand {
   Card current;
   int size;
+  int[] num;
   
   Hand() {
     current = null;
     size = 0;
+    num = new int[13];
   }
   
   boolean isEmpty() {
@@ -14,6 +16,10 @@ class Hand {
   
   int getSize() {
     return size;
+  }
+  
+  int[] getNum() {
+    return num;
   }
   
   void insert(Card c) {
@@ -31,6 +37,7 @@ class Hand {
       current.prev = c;
       current = c;
     }
+    num[c.getValue() - 1]++;
     size++;
   }
   /*
@@ -63,6 +70,7 @@ class Hand {
       current.prev.next = current.next;
       current = current.next;
     }
+    num[c.getValue() - 1]--;
     size--;
     return c;
   }
