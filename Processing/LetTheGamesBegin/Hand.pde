@@ -1,6 +1,5 @@
 // doubly linked list of cards
 class Hand {
-  
   Card current;
   int size;
   
@@ -10,7 +9,7 @@ class Hand {
   }
   
   boolean isEmpty() {
-    return (size == 0);
+    return size == 0;
   }
   
   int getSize() {
@@ -26,14 +25,33 @@ class Hand {
     else {
       c.next = current;
       c.prev = current.prev;
-      if (current.prev != null)
+      if (current.prev != null) {
         current.prev.next = c;
+      }
       current.prev = c;
       current = c;
     }
     size++;
   }
-  
+  /*
+  void insert(Card c) {
+    if (current == null) {
+      current = c;
+      c.next = c;
+      c.prev = c;
+    }
+    else {
+      c.next = current;
+      c.prev = current.prev;
+      if (current.prev != null) {
+        current.prev.next = c;
+      }
+      current.prev = c;
+      current = c;
+    }
+    //size++;
+  }
+  */
   // discards the current card
   Card discard() {
     Card c = current;

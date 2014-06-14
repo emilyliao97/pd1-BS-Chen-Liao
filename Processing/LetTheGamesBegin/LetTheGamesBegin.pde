@@ -6,9 +6,14 @@ void setup() {
 }
 
 void draw() {
-  background(255);
-  fill(255,0,0);
+  background(100);
   g.play();
+  
+  // FOR TESTING PURPOSES
+  PImage test;
+  test = loadImage("CardPics/001c.gif");
+  image(test,100,100);
+  
 }
 
 class Game {
@@ -48,7 +53,7 @@ class Game {
 
   void startgame() {
     isPlaying = true;
-    d1.deal();
+    //d1.deal();
     player1 = new Player(d1.getp1());
     player2 = new Player(d1.getp2());
     player3 = new Player(d1.getp3());
