@@ -1,20 +1,24 @@
 Game g;
 
 void setup() {
-  size(600,600);
+  size(1000, 700);
   g = new Game();
+  g.startGame();
 }
 
 void draw() {
-  background(100);
-  g.play();
-  
+  background(#38B480);
+  g.user.getMine().displayHand();
+  //g.play();
+
   // FOR TESTING PURPOSES
   PImage test;
   test = loadImage("CardPics/001c.gif");
-  image(test,100,100);
-  
+  image(test, 100, 100);
+  test = loadImage("CardPics/002c.gif");
+  image(test, 200, 100);
 }
+
 
 class Game {
   Deck d1;
@@ -34,7 +38,6 @@ class Game {
   }
 
   String call() {
-
     String callStr = "";
     if ( ctr == 1 )
       callStr = "ACE";
@@ -51,9 +54,9 @@ class Game {
     return callStr;
   }
 
-  void startgame() {
+  void startGame() {
     isPlaying = true;
-    //d1.deal();
+    d1.deal();
     player1 = new Player(d1.getp1());
     player2 = new Player(d1.getp2());
     player3 = new Player(d1.getp3());
@@ -62,26 +65,26 @@ class Game {
     currentPlayer = start;
   }
 
-  //why can't i do that? :( 
-  /*
-    Hand getPlayer() {
-   if (currentPlayer == 0) 
-   return user;
-   if (currentPlayer == 1)
-   return player1;
-   if (currentPlayer == 2)   
-   return player2;  
-   if (currentPlayer == 3)
-   return player3;
-   }
-   */
+  // hey emily~ i fixed this :D
+  // delete the comments after you see the message
+  Hand getPlayer() {
+    if (currentPlayer == 0) 
+      return user.getMine();
+    else if (currentPlayer == 1)
+      return player1.getMine();
+    else if (currentPlayer == 2)   
+      return player2.getMine();  
+    else if (currentPlayer == 3)
+      return player3.getMine();
+    else
+      return null;
+  }
 
   //void sayBS() {
 
   //}
 
   void play() {
-    startgame();
     if (user.getMine().isEmpty() 
       || player1.getMine().isEmpty() 
       || player2.getMine().isEmpty() 
@@ -94,15 +97,6 @@ class Game {
       //if (currentPlayer = 0) 
       //insert code for player clicking card & placing it down
     }
-  }
-
-  void displayUserHand() {   
-    // displaying image in progress
-/*
-    for (int i=0; i<g.user.getMine().getSize(); i++) {
-      image(g.user.getMine().getCurrent().getImage(), 50+75*i, 500);
-    }
-    */
   }
 }
 

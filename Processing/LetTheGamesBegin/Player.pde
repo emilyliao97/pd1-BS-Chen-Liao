@@ -27,5 +27,6 @@ class Player {
       take(now);
       now = d.getTop().getNext();
     }
-  } 
+  }
+  
 }

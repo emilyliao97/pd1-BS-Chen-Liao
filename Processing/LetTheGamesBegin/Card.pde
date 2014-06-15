@@ -108,5 +108,6 @@ class Card {
   PImage getImage() {
     return img;
   }
+  
 }
 

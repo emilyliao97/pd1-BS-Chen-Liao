@@ -2,12 +2,10 @@
 class Hand {
   Card current;
   int size;
-  int[] num;
   
   Hand() {
     current = null;
     size = 0;
-    num = new int[13];
   }
   
   boolean isEmpty() {
@@ -18,10 +16,6 @@ class Hand {
     return size;
   }
   
-  int[] getNum() {
-    return num;
-  }
-  
   void insert(Card c) {
     if (current == null) {
       current = c;
@@ -37,28 +31,9 @@ class Hand {
       current.prev = c;
       current = c;
     }
-    num[c.getValue() - 1]++;
     size++;
   }
-  /*
-  void insert(Card c) {
-    if (current == null) {
-      current = c;
-      c.next = c;
-      c.prev = c;
-    }
-    else {
-      c.next = current;
-      c.prev = current.prev;
-      if (current.prev != null) {
-        current.prev.next = c;
-      }
-      current.prev = c;
-      current = c;
-    }
-    //size++;
-  }
-  */
+  
   // discards the current card
   Card discard() {
     Card c = current;
@@ -70,13 +45,23 @@ class Hand {
       current.prev.next = current.next;
       current = current.next;
     }
-    num[c.getValue() - 1]--;
     size--;
     return c;
   }
   
   Card getCurrent() {
     return current;
+  }
+  
+  void setCurrent(Card c) {
+    current = c;
+  }
+  
+  void displayHand() {
+    for (int i=0; i<size; i++) {
+      image(current.getImage(),i*70,500);
+      current = current.getNext();
+    }
   }
   
 }
