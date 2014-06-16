@@ -29,3 +29,14 @@ Date --- Name --- Description of what was done
 6/10 -- Jane --- Started experimenting with sketching the game
 
 6/11 -- Emily --- tried to fix sketch window issue... (didn't succeed... yet)
+
+6/12 -- Jane --- Wrote displayUserHand method, but still unable to fix issue mentioned above
+
+6/13 -- Emily --- Started writing methods for the computer player
+
+6/13 -- Jane --- Found source of errors but not yet fixed
+
+6/14 -- Jane --- Fixed the error (yay!)
+
+6/15 -- Jane --- Worked on user input via arrow keys
+
