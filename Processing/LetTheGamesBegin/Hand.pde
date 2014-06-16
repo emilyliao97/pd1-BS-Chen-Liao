@@ -59,7 +59,7 @@ class Hand {
   
   void displayHand() {
     for (int i=0; i<size; i++) {
-      image(current.getImage(),i*70,500);
+      image(current.getImage(),i*(1000/size),500);
       current = current.getNext();
     }
   }

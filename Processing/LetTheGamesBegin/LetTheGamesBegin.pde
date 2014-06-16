@@ -1,7 +1,7 @@
 Game g;
 
 void setup() {
-  size(1000, 700);
+  size(1050, 700);
   g = new Game();
   g.startGame();
 }
@@ -10,13 +10,6 @@ void draw() {
   background(#38B480);
   g.user.getMine().displayHand();
   //g.play();
-
-  // FOR TESTING PURPOSES
-  PImage test;
-  test = loadImage("CardPics/001c.gif");
-  image(test, 100, 100);
-  test = loadImage("CardPics/002c.gif");
-  image(test, 200, 100);
 }
 
 
