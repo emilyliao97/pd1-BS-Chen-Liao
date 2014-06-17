@@ -19,7 +19,7 @@ class Hand {
     return size;
   }
   
-  int[] getNume() {
+  int[] getNum() {
     return num;
   }
 
