@@ -82,14 +82,14 @@ class Hand {
   }
 
   void displayHand() {
-    Card tmp = current;
+    Card tmp = head;
     for (int i=0; i<size; i++) {
       if (current.equals(tmp)) {
-        image(current.getImage(), i*(1000/size), 475);
+        image(tmp.getImage(), i*(1000/size), 475);
       } else {
-        image(current.getImage(), i*(1000/size), 500);
+        image(tmp.getImage(), i*(1000/size), 500);
       }
-      current = current.getNext();
+      tmp = tmp.getNext();
     }
   }
   

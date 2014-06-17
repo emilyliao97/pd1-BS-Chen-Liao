@@ -26,7 +26,7 @@ void keyPressed() {
     userHand.discard();
     userHand.setCurrent(currentCard.getNext());
   } else if (keyCode == DOWN) {
-    userHand.orderHand();
+    //userHand = userHand.mergeSort(userHand);
   }
 }
 
