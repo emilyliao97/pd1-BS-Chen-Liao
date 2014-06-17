@@ -82,6 +82,7 @@ class Game {
 
   String call() {
     String callStr = "";
+    ctr++;
     if ( ctr == 1 )
       callStr = "ACE";
     else if ( ctr == 11 ) 
@@ -93,7 +94,6 @@ class Game {
       ctr = 0;
     } else 
       callStr = "" + ctr;
-    ctr++;
     return callStr;
   }
 
@@ -126,9 +126,23 @@ class Game {
       return null;
   }
 
-  //void sayBS() {
 
-  //}
+  Player sayBS(Player play1, Player play2, Player play3) {
+    int max = play1.calcBS();
+    Player caller = play1;
+    if ( play2.calcBS() > max ) {
+      max = play2.calcBS();
+      caller = play2;
+    }
+    if ( play3.calcBS() > max ) {
+      max = play3.calcBS();
+      caller = play3;
+    }
+    if ( max < 30 )
+      caller = null;
+    return caller;
+  }
+    
 
   void play() {
     if (user.getMine().isEmpty() 
@@ -137,12 +151,44 @@ class Game {
       || player3.getMine().isEmpty() ) 
       isPlaying = false; 
     while ( isPlaying == true ) {
+      Discards d = new Discards();
       call();
       if (currentPlayer == 3)
         currentPlayer = 0;
       //if (currentPlayer = 0) 
       //insert code for player clicking card & placing it down
+      if (currentPlayer == 1) {
+        Card down = player1.compPlay(d, ctr);
+        Player said = sayBS(player1, player2, player3);
+        if ( said != player1 && said != null ) {
+          if ( down.getValue() == ctr )
+            said.takeDis(d);
+          else 
+            player1.takeDis(d); 
+        }
+      }
+      if (currentPlayer == 2) {
+        Card down = player2.compPlay(d, ctr);
+        Player said = sayBS(player1, player2, player3);
+        if ( said != player2 && said != null ) {
+          if ( down.getValue() == ctr )
+            said.takeDis(d);
+          else 
+            player2.takeDis(d); 
+        }
+      }
+      if (currentPlayer == 3) {
+        Card down = player3.compPlay(d, ctr);
+        Player said = sayBS(player1, player2, player3);
+        if ( said != player3 && said != null ) {
+          if ( down.getValue() == ctr )
+            said.takeDis(d);
+          else 
+            player3.takeDis(d); 
+        }
+      }
     }
   }
+
 }
 
