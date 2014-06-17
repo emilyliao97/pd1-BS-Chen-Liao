@@ -1,14 +1,23 @@
 // linked list of cards
 class Hand {
-  Card head, current;
+  Card head, current, tail;
   int size;
   int[] num;
 
   Hand() {
-    head = new Card();
-    current = null;
+    head = null;
+    current = head;
+    tail = current;
     size = 0;
     num = new int[13];
+  }
+  
+  Hand(Card c) {
+    head = c;
+    current = c;
+    tail = c;
+    size = 1;
+    num[c.getValue() - 1] ++;
   }
 
   boolean isEmpty() {
@@ -37,6 +46,7 @@ class Hand {
       current.prev = c;
       current = c;
     }
+    head = c;
     num[c.getValue() - 1]++;
     size++;
   }
@@ -55,6 +65,13 @@ class Hand {
     size--;
     return c;
   }
+  
+  Card removeFirst() {
+    Card temp = head;
+    head = head.getNext();
+    return temp;
+  }
+    
 
   Card getCurrent() {
     return current;
@@ -74,6 +91,73 @@ class Hand {
       }
       current = current.getNext();
     }
+  }
+  
+  Hand mergeSort(Hand h) {
+    if (h.getSize() <= 1) {
+      Hand retH = new Hand(h.getCurrent());
+      return retH;
+    } 
+    else {
+      Hand h1 = new Hand();
+      Hand h2 = new Hand();
+      int half = size / 2;
+      //int h1Count = 0, h2Count = 0;
+      for (int i=0; i<half; i++) {
+        if (i < half) {
+          h1.insert(current);
+          current = current.getNext();
+          //d1Count++;
+        } else {
+          h2.insert(current);
+          current = current.getNext();
+          //d2Count++;
+        }
+      }
+      h1 = mergeSort(h1);
+      h2 = mergeSort(h2);
+      return merge(h1, h2);
+    }
+  }
+
+  Card[] merge(Hand h1, Hand h2) {
+    Hand sorted = new Hand();
+    
+    /*int d1Count = 0, d2Count = 0;
+    for (int i=0; i<52; i++) {
+      if (d1Count == d1.length) {
+        sorted[i] = d2[d2Count];
+        d2Count++;
+      } else if (d2Count == d2.length) {
+        sorted[i] = d1[d1Count];
+        d1Count++;
+      } else if ( d2[d2Count].compareTo(d1[d1Count]) < 0) {
+        sorted[i] = d1[d1Count];
+        d1Count++;
+      } else {
+        sorted[i] = d2[d2Count];
+        d2Count++;
+      }
+    } */
+    while ( h1.getSize() > 0 && h2.getSize() > 0 ) {
+      if ( h1.getCurrent() < h2.getCurrent() ) {
+        Card temp = h1.removeFirst();
+        sorted.insert(temp);
+      }
+      else {
+        Card temp = h2.removeFirst(); 
+        sorted.insert(temp);
+      }
+    }
+   while ( h1.getSize() > 0 ) {
+       Card temp = h1.removeFirst();
+        sorted.insert(temp);
+   }
+   while ( h1.getSize() > 0 ) {
+     Card temp = h2.removeFirst(); 
+     sorted.insert(temp);  
+   }
+    return sorted;
   }
 
   void keyPressed() {

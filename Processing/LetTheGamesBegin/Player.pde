@@ -29,6 +29,10 @@ class Player {
     }
   }
   
+  void setBS(int i) {
+    percentBS = 100;
+  }
+  
   int calcBS() {
     for (int i = 0; i< 13; i++ ) {
       if (mine.getNum()[i] == 4) 
@@ -40,5 +44,10 @@ class Player {
     }
     return percentBS;
   }
+  
+  /*void compPlay(Discards d, int i) {
+    mine.sort();
+    if (d.getSize() > 7 && mine.getNum()[i] == 
+  } */
   
 }
