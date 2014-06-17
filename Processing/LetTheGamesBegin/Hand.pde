@@ -1,11 +1,15 @@
 // linked list of cards
 class Hand {
-  Card head, current;
+  // current is the card that the user points to using arrow keys
+  // first is the first card in the hand (farthest left)
+  Card current, first;
+  Card[] hand;
   int size;
 
   Hand() {
-    head = new Card();
     current = null;
+    first = null;
+    hand = new Card[52];
     size = 0;
   }
 
@@ -20,6 +24,7 @@ class Hand {
   void insert(Card c) {
     if (current == null) {
       current = c;
+      first = c;
       c.next = c;
       c.prev = c;
     } else {
@@ -31,6 +36,7 @@ class Hand {
       current.prev = c;
       current = c;
     }
+    hand[size] = c;
     size++;
   }
 
@@ -44,6 +50,7 @@ class Hand {
       current.prev.next = current.next;
       current = current.next;
     }
+    // remove card from array hand
     size--;
     return c;
   }
@@ -57,30 +64,67 @@ class Hand {
   }
 
   void displayHand() {
-    Card tmp = current;
+    Card tmp = first;
     for (int i=0; i<size; i++) {
       if (current.equals(tmp)) {
-        image(current.getImage(), i*(1000/size), 475);
+        image(tmp.getImage(), i*(1000/size), 475);
       } else {
-        image(current.getImage(), i*(1000/size), 500);
+        image(tmp.getImage(), i*(1000/size), 500);
       }
-      current = current.getNext();
+      tmp = tmp.getNext();
     }
   }
 
-  void keyPressed() {
-    displayHand();
-    if (key == LEFT) {
-      current = current.getPrev();
-      background(0);
-    } else if (key == RIGHT) {
-      current = current.getNext();
-      background(255);
-    } else if (key == UP) {
-      discard();
-      current = current.getNext();
+  void orderHand() {
+    hand = mergeSort(hand);
+    current = first = null;
+    for (int i=0; i<size; i++) {
+      insert(hand[i]);
     }
   }
-  
+
+  Card[] mergeSort(Card[] d) {
+    if (d.length <= 1) {
+      return d;
+    } else {
+      Card[] d1 = new Card[52];
+      Card[] d2 = new Card[52];
+      int half = d.length / 2;
+      int d1Count = 0, d2Count = 0;
+      for (int i=0; i<half; i++) {
+        if (i < half) {
+          d1[d1Count] = d[i];
+          d1Count++;
+        } else {
+          d2[d2Count] = d[i];
+          d2Count++;
+        }
+      }
+      d1 = mergeSort(d1);
+      d2 = mergeSort(d2);
+      return merge(d1, d2);
+    }
+  }
+
+  Card[] merge(Card[] d1, Card[] d2) {
+    Card[] sorted = new Card[52];
+    int d1Count = 0, d2Count = 0;
+    for (int i=0; i<52; i++) {
+      if (d1Count == d1.length) {
+        sorted[i] = d2[d2Count];
+        d2Count++;
+      } else if (d2Count == d2.length) {
+        sorted[i] = d1[d1Count];
+        d1Count++;
+      } else if ( d2[d2Count].compareTo(d1[d1Count]) < 0) {
+        sorted[i] = d1[d1Count];
+        d1Count++;
+      } else {
+        sorted[i] = d2[d2Count];
+        d2Count++;
+      }
+    }
+    return sorted;
+  }
 }
 
