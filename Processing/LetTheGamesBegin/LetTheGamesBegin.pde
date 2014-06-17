@@ -9,6 +9,7 @@ void setup() {
 void draw() {
   background(#38B480);
   displayText();
+  g.discardPile.displayDiscards();
   g.user.getMine().displayHand();
   //g.play();
 }

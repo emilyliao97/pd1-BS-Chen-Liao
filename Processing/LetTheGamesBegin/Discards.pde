@@ -29,6 +29,12 @@ class Discards {
     return top + 1;
   }
   
-  
+  void displayDiscards() {
+    if (getSize() > 0) {
+      PImage img = loadImage("CardPics/Back_1.jpg");
+      image(img,450,200);
+    }
+    
+  }
 }
 
