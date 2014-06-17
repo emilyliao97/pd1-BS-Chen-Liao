@@ -45,15 +45,20 @@ class Player {
     return percentBS;
   }
   
-  void compPlay(Discards d, int i) {
+  Card compPlay(Discards d, int i) {
+    Card letGo = new Card();
     if (d.getSize() > 7 && mine.getNum()[i-1] > 0) {
-      mine.mergeSort(mine);
+      //mine.mergeSort(mine);
       while (mine.getCurrent().getValue() != i)
         mine.setCurrent(mine.getCurrent().getNext());
+      letGo = mine.getCurrent();
       mine.discard();
     }
-    else
+    else {
+      letGo = mine.getCurrent();
       mine.discard();
+    }
+    return letGo;
   }
   
 }
