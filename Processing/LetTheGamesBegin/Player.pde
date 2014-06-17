@@ -45,10 +45,16 @@ class Player {
     return percentBS;
   }
   
-  /*void compPlay(Discards d, int i) {
-    mine.sort();
-    if (d.getSize() > 7 && mine.getNum()[i] == 
-  } */
+  void compPlay(Discards d, int i) {
+    if (d.getSize() > 7 && mine.getNum()[i-1] > 0) {
+      mine.sort();
+      while (mine.getCurrent().getValue != i)
+        current = current.getNext();
+      mine.discard();
+    }
+    else
+      mine.discard();
+  }
   
 }
 
