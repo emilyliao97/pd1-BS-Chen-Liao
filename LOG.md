@@ -28,7 +28,7 @@ Date --- Name --- Description of what was done
 
 6/10 -- Jane --- Started experimenting with sketching the game
 
-6/11 -- Emily --- tried to fix sketch window issue... (didn't succeed... yet)
+6/11 -- Emily --- Tried to fix sketch window issue... (didn't succeed... yet)
 
 6/12 -- Jane --- Wrote displayUserHand method, but still unable to fix issue mentioned above
 
@@ -40,3 +40,6 @@ Date --- Name --- Description of what was done
 
 6/15 -- Jane --- Worked on user input via arrow keys
 
+6/16 -- Emily --- Improved upon computer players
+
+6/16 -- Jane --- Rewrote Discards to act more like a stack. Fixed imaging.

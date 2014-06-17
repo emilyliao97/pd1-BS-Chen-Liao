@@ -10,31 +10,25 @@ void draw() {
   background(#38B480);
   // currently being tested
   g.user.getMine().displayHand();
-  g.user.getMine().keyPressed();
+  //g.user.getMine().keyPressed();
   text(g.user.getMine().getCurrent().getValue(), 100, 100);
   //g.play();
-  /*
-  if (keyPressed == true) {
-    keyPressed();
-  }
-  */
 }
 
 void keyPressed() {
-  Card currentCard = g.user.getMine().getCurrent();
+  Hand userHand = g.user.getMine();
+  Card currentCard = userHand.getCurrent();
   if (keyCode == LEFT) {
-    g.user.getMine().setCurrent(currentCard.getPrev());
-    //current = current.getPrev();
+    userHand.setCurrent(currentCard.getPrev());
   } else if (keyCode == RIGHT) {
-    g.user.getMine().setCurrent(currentCard.getNext());
-    //current = current.getNext();
+    userHand.setCurrent(currentCard.getNext());
   } else if (keyCode == UP) {
-    g.user.getMine().discard();
-    g.user.getMine().setCurrent(currentCard.getNext());
-    //current = current.getNext();
+    userHand.discard();
+    userHand.setCurrent(currentCard.getNext());
+  } else if (keyCode == DOWN) {
+    userHand.orderHand();
   }
 }
-
 
 class Game {
   Deck d1;

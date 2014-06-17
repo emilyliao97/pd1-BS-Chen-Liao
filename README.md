@@ -21,8 +21,9 @@ The original Game.pde file did not compile because of the file name ("The nested
 
 
 Data structures used:
-
-
-
+- stack for Discards class
+- linked list for Hand class
+- node for Card class
+- array for Deck class
 
 Other highlights:
