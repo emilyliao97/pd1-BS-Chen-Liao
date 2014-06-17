@@ -47,9 +47,9 @@ class Player {
   
   void compPlay(Discards d, int i) {
     if (d.getSize() > 7 && mine.getNum()[i-1] > 0) {
-      mine.sort();
-      while (mine.getCurrent().getValue != i)
-        current = current.getNext();
+      mine.mergeSort(mine);
+      while (mine.getCurrent().getValue() != i)
+        mine.setCurrent(mine.getCurrent().getNext());
       mine.discard();
     }
     else
