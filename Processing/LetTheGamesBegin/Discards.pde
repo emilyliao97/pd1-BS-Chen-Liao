@@ -29,11 +29,6 @@ class Discards {
     return top + 1;
   }
   
-  void playerTakesCards(Hand h) {
-    int size = top+1;
-    for (int i=0; i<size; i++) {
-      h.insert(removeCard());
-    }
-  }
+  
 }
 

@@ -35,12 +35,14 @@ void displayText() {
     fill(#000EF7);
     text("Player 2", 500, 50);
     fill(255);
-    text("Discard pile", 500, 400);
   } else {
     text("Player 2", 500, 50);
-    text("Discard pile", 500, 400);
   }
+  text("Number of cards discarded: "+g.discardPile.getSize(),500,400);
+  fill(#8AE0C0);
+  rect(450,200,106,169);
   textAlign(LEFT);
+  fill(255);
   if (g.getPlayer().equals(g.player3)) {
     fill(#000EF7);
     text("Player 3", 950, 275);
@@ -58,7 +60,7 @@ void keyPressed() {
   } else if (keyCode == RIGHT) {
     userHand.setCurrent(currentCard.getNext());
   } else if (keyCode == UP) {
-    userHand.discard();
+    g.discardPile.addCard(userHand.discard());
     userHand.setCurrent(currentCard.getNext());
   }
 }
