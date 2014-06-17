@@ -42,3 +42,4 @@ Date --- Name --- Description of what was done
 
 6/16 -- Emily --- Improved upon computer players
 
+6/16 -- Jane --- Rewrote Discards to act more like a stack. Fixed imaging.
