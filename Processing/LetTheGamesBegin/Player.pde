@@ -29,4 +29,16 @@ class Player {
     }
   }
   
+  int calcBS() {
+    for (int i = 0; i< 13; i++ ) {
+      if (mine.getNum()[i] == 4) 
+        percentBS = 100;
+    }
+    if (percentBS == 0) {
+      int rand = (int) random(50);
+      percentBS = rand;
+    }
+    return percentBS;
+  }
+  
 }
