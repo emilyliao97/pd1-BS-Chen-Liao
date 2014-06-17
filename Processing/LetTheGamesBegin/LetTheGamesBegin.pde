@@ -8,11 +8,46 @@ void setup() {
 
 void draw() {
   background(#38B480);
-  // currently being tested
+  displayText();
   g.user.getMine().displayHand();
-  //g.user.getMine().keyPressed();
-  text(g.user.getMine().getCurrent().getValue(), 100, 100);
   //g.play();
+}
+
+void displayText() {
+  textSize(16);
+  textAlign(RIGHT);
+  if (g.getPlayer().equals(g.player1)) {
+    fill(#000EF7);
+    text("Player 1", 100, 275);
+    fill(255);
+  } else {
+    text("Player 1", 100, 275);
+  }
+  if (g.getPlayer().equals(g.user)) {
+    fill(#000EF7);
+    text("User", 50, 690);
+    fill(255);
+  } else {
+    text("User", 50, 690);
+  }
+  textAlign(CENTER);
+  if (g.getPlayer().equals(g.player2)) {
+    fill(#000EF7);
+    text("Player 2", 500, 50);
+    fill(255);
+    text("Discard pile", 500, 400);
+  } else {
+    text("Player 2", 500, 50);
+    text("Discard pile", 500, 400);
+  }
+  textAlign(LEFT);
+  if (g.getPlayer().equals(g.player3)) {
+    fill(#000EF7);
+    text("Player 3", 950, 275);
+    fill(255);
+  } else {
+    text("Player 3", 959, 275);
+  }
 }
 
 void keyPressed() {
@@ -25,8 +60,6 @@ void keyPressed() {
   } else if (keyCode == UP) {
     userHand.discard();
     userHand.setCurrent(currentCard.getNext());
-  } else if (keyCode == DOWN) {
-    //userHand = userHand.mergeSort(userHand);
   }
 }
 
@@ -71,21 +104,24 @@ class Game {
     player2 = new Player(d1.getp2());
     player3 = new Player(d1.getp3());
     user = new Player(d1.getp4());
+    //user.setMine(g.user.getMine().mergeSort(d1.getp4()));
     int start = (int) random(4);
     currentPlayer = start;
   }
 
-  // hey emily~ i fixed this :D
-  // delete the comments after you see the message
-  Hand getPlayer() {
+  Hand getPlayerHand() {
+    return getPlayer().getMine();
+  }
+
+  Player getPlayer() {
     if (currentPlayer == 0) 
-      return user.getMine();
+      return user;
     else if (currentPlayer == 1)
-      return player1.getMine();
+      return player1;
     else if (currentPlayer == 2)   
-      return player2.getMine();  
+      return player2;  
     else if (currentPlayer == 3)
-      return player3.getMine();
+      return player3;
     else
       return null;
   }
