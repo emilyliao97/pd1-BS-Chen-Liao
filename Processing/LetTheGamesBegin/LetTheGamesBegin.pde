@@ -13,7 +13,6 @@ void draw() {
   //g.user.getMine().keyPressed();
   text(g.user.getMine().getCurrent().getValue(), 100, 100);
   //g.play();
-  
 }
 
 void keyPressed() {

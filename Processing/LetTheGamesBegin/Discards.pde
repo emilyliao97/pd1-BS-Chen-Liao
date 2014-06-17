@@ -1,29 +1,39 @@
 class Discards {
-  Card top;
-  int size;
+  int top;
+  Card[] stack;
 
   Discards() {
-    top = null;
-    size = 0;
+    stack = new Card[52];
+    top = -1;
   }
 
-  int getSize() {
-    return size;
+  // push
+  void addCard(Card c) {
+    top++;
+    stack[top] = c;
   }
 
-  void setTop(Card c) {
-    top = c;
-    size++;
+  // pop
+  Card removeCard() {
+    Card tmp = stack[top];
+    top--;
+    return tmp;
   }
 
+  // peek
   Card getTop() {
-    return top;
-  }
-
-  void reset() {
-    top = null;
-    size = 0;
+    return stack[top];
   }
   
+  int getSize() {
+    return top + 1;
+  }
+  
+  void playerTakesCards(Hand h) {
+    int size = top+1;
+    for (int i=0; i<size; i++) {
+      h.insert(removeCard());
+    }
+  }
 }
 

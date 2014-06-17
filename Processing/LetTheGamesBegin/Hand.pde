@@ -5,12 +5,14 @@ class Hand {
   Card current, first;
   Card[] hand;
   int size;
+  int[] num;
 
   Hand() {
     current = null;
     first = null;
     hand = new Card[52];
     size = 0;
+    num = new int[13];
   }
 
   boolean isEmpty() {
@@ -19,6 +21,10 @@ class Hand {
 
   int getSize() {
     return size;
+  }
+
+  int[] getNum() {
+    return num;
   }
 
   void insert(Card c) {
@@ -38,6 +44,7 @@ class Hand {
     }
     hand[size] = c;
     size++;
+    num[c.getValue() - 1]++;
   }
 
   // discards the current card
@@ -50,8 +57,9 @@ class Hand {
       current.prev.next = current.next;
       current = current.next;
     }
-    // remove card from array hand
-    size--;
+      // remove card from array hand
+      size--;
+      num[c.getValue() - 1]--;
     return c;
   }
 
