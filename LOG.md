@@ -42,4 +42,12 @@ Date --- Name --- Description of what was done
 
 6/16 -- Emily --- Improved upon computer players
 
-6/16 -- Jane --- Rewrote Discards to act more like a stack. Fixed imaging.
+6/16 -- Jane --- Rewrote Discards to act more like a stack. Fixed imaging. Added text.
+
+6/17 -- Jane --- Added imaging for the deck
+
+6/17 -- Emily --- Wrote delay time
+
+6/18 -- Emily --- Continued writing play
+
+6/18 -- Jane --- Fixed errors so players can take turn discarding
