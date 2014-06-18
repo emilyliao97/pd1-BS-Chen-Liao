@@ -11,7 +11,7 @@ void draw() {
   displayText();
   g.discardPile.displayDiscards();
   g.user.getMine().displayHand();
-  //g.play();
+  g.play();
 }
 
 void displayText() {
@@ -165,12 +165,11 @@ class Game {
     while ( isPlaying == true ) {
       Discards d = new Discards();
       call();
-      if (currentPlayer == 3)
-        currentPlayer = 0;
       //if (currentPlayer = 0) 
       //insert code for player clicking card & placing it down
       if (currentPlayer == 1) {
         Card down = player1.compPlay(d, ctr);
+        delay(100);
         Player said = sayBS(player1, player2, player3);
         if ( said != player1 && said != null ) {
           if ( down.getValue() == ctr )
@@ -181,6 +180,7 @@ class Game {
       }
       if (currentPlayer == 2) {
         Card down = player2.compPlay(d, ctr);
+        delay(100);
         Player said = sayBS(player1, player2, player3);
         if ( said != player2 && said != null ) {
           if ( down.getValue() == ctr )
@@ -191,6 +191,7 @@ class Game {
       }
       if (currentPlayer == 3) {
         Card down = player3.compPlay(d, ctr);
+        delay(100);
         Player said = sayBS(player1, player2, player3);
         if ( said != player3 && said != null ) {
           if ( down.getValue() == ctr )
@@ -199,6 +200,10 @@ class Game {
             player3.takeDis(d); 
         }
       }
+      if (currentPlayer == 3)
+        currentPlayer = 0;
+      else
+        currentPlayer++;
     }
   }
 
