@@ -4,6 +4,7 @@ void setup() {
   size(1050, 700);
   g = new Game();
   g.startGame();
+  g.play();
 }
 
 void draw() {
@@ -11,9 +12,9 @@ void draw() {
   displayText();
   g.discardPile.displayDiscards();
   g.user.getMine().displayHand();
-  g.play();
 }
 
+// very messy code
 void displayText() {
   textSize(16);
   textAlign(RIGHT);
@@ -32,6 +33,9 @@ void displayText() {
     text("User", 50, 690);
   }
   textAlign(CENTER);
+  if (g.currentPlayer != 0) {
+    text("<Press ENTER to continue>", 500, 690);
+  }
   if (g.getPlayer().equals(g.player2)) {
     fill(#000EF7);
     text("Player 2", 500, 50);
@@ -39,9 +43,10 @@ void displayText() {
   } else {
     text("Player 2", 500, 50);
   }
-  text("Number of cards discarded: "+g.discardPile.getSize(),500,400);
+  text("Number of cards discarded: "+g.discardPile.getSize(), 500, 400);
+  text("Current card: " + g.getCurrentCard(), 500, 425);
   fill(#8AE0C0);
-  rect(450,200,106,169);
+  rect(450, 200, 106, 169);
   textAlign(LEFT);
   fill(255);
   if (g.getPlayer().equals(g.player3)) {
@@ -56,13 +61,20 @@ void displayText() {
 void keyPressed() {
   Hand userHand = g.user.getMine();
   Card currentCard = userHand.getCurrent();
-  if (keyCode == LEFT) {
-    userHand.setCurrent(currentCard.getPrev());
-  } else if (keyCode == RIGHT) {
-    userHand.setCurrent(currentCard.getNext());
-  } else if (keyCode == UP) {
-    g.discardPile.addCard(userHand.discard());
-    userHand.setCurrent(currentCard.getNext());
+  if (g.currentPlayer == 0) {
+    if (keyCode == LEFT) {
+      userHand.setCurrent(currentCard.getPrev());
+    } else if (keyCode == RIGHT) {
+      userHand.setCurrent(currentCard.getNext());
+    } else if (keyCode == UP) {
+      g.discardPile.addCard(userHand.discard());
+      userHand.setCurrent(currentCard.getNext());
+      g.play();
+    }
+  } else {
+    if (keyCode == ENTER) {
+      g.play();
+    }
   }
 }
 
@@ -73,6 +85,7 @@ class Game {
   int currentPlayer;
   boolean isPlaying;
   int ctr;
+  String currentCard = "";
 
   Game() {
     d1 = new Deck();
@@ -82,17 +95,17 @@ class Game {
     //startingPlayer();
     isPlaying = false;
   }
-  
+
   void delay(int n) {
-  try {
-    Thread.sleep(n);
+    try {
+      Thread.sleep(n);
     }
-  catch (InterruptedException e) {
+    catch (InterruptedException e) {
       System.exit(0);
     }
   }
 
-  String call() {
+  void call() {
     String callStr = "";
     ctr++;
     if ( ctr == 1 )
@@ -106,8 +119,12 @@ class Game {
       ctr = 0;
     } else 
       callStr = "" + ctr;
-    return callStr;
+    currentCard = callStr;
   }
+
+  String getCurrentCard() {
+    return currentCard;
+  }  
 
   void startGame() {
     isPlaying = true;
@@ -138,7 +155,6 @@ class Game {
       return null;
   }
 
-
   Player sayBS(Player play1, Player play2, Player play3) {
     int max = play1.calcBS();
     Player caller = play1;
@@ -154,50 +170,49 @@ class Game {
       caller = null;
     return caller;
   }
-    
 
   void play() {
     if (user.getMine().isEmpty() 
       || player1.getMine().isEmpty() 
       || player2.getMine().isEmpty() 
-      || player3.getMine().isEmpty() ) 
-      isPlaying = false; 
-    while ( isPlaying == true ) {
-      Discards d = new Discards();
+      || player3.getMine().isEmpty() ) { 
+      isPlaying = false;
+      noLoop(); // stops the draw method
+    } else if (isPlaying == true) {
       call();
       //if (currentPlayer = 0) 
-      //insert code for player clicking card & placing it down
+      //insert code for player clicking card & placing it down      
       if (currentPlayer == 1) {
-        Card down = player1.compPlay(d, ctr);
-        delay(100);
+        Card down = player1.compPlay(discardPile, ctr);
+        //delay(100);
         Player said = sayBS(player1, player2, player3);
         if ( said != player1 && said != null ) {
           if ( down.getValue() == ctr )
-            said.takeDis(d);
+            said.takeDis(discardPile);
           else 
-            player1.takeDis(d); 
+            player1.takeDis(discardPile);
         }
       }
       if (currentPlayer == 2) {
-        Card down = player2.compPlay(d, ctr);
-        delay(100);
+        Card down = player2.compPlay(discardPile, ctr);
+        //delay(100);
         Player said = sayBS(player1, player2, player3);
         if ( said != player2 && said != null ) {
           if ( down.getValue() == ctr )
-            said.takeDis(d);
+            said.takeDis(discardPile);
           else 
-            player2.takeDis(d); 
+            player2.takeDis(discardPile);
         }
       }
       if (currentPlayer == 3) {
-        Card down = player3.compPlay(d, ctr);
-        delay(100);
+        Card down = player3.compPlay(discardPile, ctr);
+        //delay(100);
         Player said = sayBS(player1, player2, player3);
         if ( said != player3 && said != null ) {
           if ( down.getValue() == ctr )
-            said.takeDis(d);
+            said.takeDis(discardPile);
           else 
-            player3.takeDis(d); 
+            player3.takeDis(discardPile);
         }
       }
       if (currentPlayer == 3)
@@ -206,6 +221,5 @@ class Game {
         currentPlayer++;
     }
   }
-
 }
 
