@@ -82,6 +82,15 @@ class Game {
     //startingPlayer();
     isPlaying = false;
   }
+  
+  void delay(int n) {
+  try {
+    Thread.sleep(n);
+    }
+  catch (InterruptedException e) {
+      System.exit(0);
+    }
+  }
 
   String call() {
     String callStr = "";
