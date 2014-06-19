@@ -16,12 +16,14 @@ The controls are simple:
 
 What works:
 - Players take turns to discard a card
+- The call function properly points out what card should be placed down--whether you put it down or not, as in the game, is up to the player. 
 
 
 
 What doesn't work:
 - The original Game.pde file did not compile because of the file name ("The nested type Game cannot hide an enclosing type"), so we renamed it LetTheGamesBegin.pde, which also renamed the folder.
-- As of now, the computer players do not discard any cards; only the user player can discard cards.
+- The sorting functionality we orignally placed in the game did not work, as it would take too much time, and Processing would freak out.
+- As of now, the computer players do not always discard cards or take all the cards from the discard pile.
 
 
 
