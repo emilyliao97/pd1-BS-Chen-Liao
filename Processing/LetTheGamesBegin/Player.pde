@@ -44,7 +44,7 @@ class Player {
   }
   
   Card compPlay(Discards d, int i) {
-    Card letGo = new Card();
+    Card letGo;
     if (d.getSize() > 7 && mine.getNum()[i-1] > 0) {
       //mine.mergeSort(mine);
       while (mine.getCurrent().getValue() != i)

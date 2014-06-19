@@ -181,10 +181,10 @@ class Game {
     } else if (isPlaying == true) {
       call();
       //if (currentPlayer = 0) 
-      //insert code for player clicking card & placing it down      
+      //see code above with keys     
       if (currentPlayer == 1) {
         Card down = player1.compPlay(discardPile, ctr);
-        //delay(100);
+        discardPile.addCard(down);
         Player said = sayBS(player1, player2, player3);
         if ( said != player1 && said != null ) {
           if ( down.getValue() == ctr )
@@ -195,7 +195,7 @@ class Game {
       }
       if (currentPlayer == 2) {
         Card down = player2.compPlay(discardPile, ctr);
-        //delay(100);
+        discardPile.addCard(down);
         Player said = sayBS(player1, player2, player3);
         if ( said != player2 && said != null ) {
           if ( down.getValue() == ctr )
@@ -206,7 +206,7 @@ class Game {
       }
       if (currentPlayer == 3) {
         Card down = player3.compPlay(discardPile, ctr);
-        //delay(100);
+        discardPile.addCard(down);
         Player said = sayBS(player1, player2, player3);
         if ( said != player3 && said != null ) {
           if ( down.getValue() == ctr )
